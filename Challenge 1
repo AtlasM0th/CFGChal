@@ -1,0 +1,29 @@
+## Definitions
+again = 'y'
+
+## Introduce the grading system to the user.
+print("Grade fail/pass/distinction calculator \n")
+print('For the purpose of this assessment: a grade of less than 40 marks will be deemed a "fail", marks between 40 and 79 will be deemed a "pass", and those graded over 80 will be deemed "distinction" \n')
+
+## Main body of the grader.
+while True:
+    examMarks = int(input("How many marks out of 100 did you achieve?: "))
+    
+    if examMarks < 0 or examMarks > 100:
+        print("Error, you have entered an invalid grade. Please enter a grade between 0 and 100.\n")
+        continue
+
+    roundedGrade = int(round(examMarks / 5) * 5)
+
+    if examMarks < 40:
+        print("You have failed this module with a grade of", examMarks, "Please speak with your tutor if you feel this is a mistake.\n")
+    elif examMarks >= 40 and examMarks <= 78:
+        print("You have passed this module with a grade of", roundedGrade, "Please speak with your tutor if you feel your grade should be higher.\n")
+    elif examMarks >= 79 and examMarks <= 100:
+        print("You have gained a distinction in this module with a grade of", roundedGrade, "Please speak with your tutor if you feel your grade should be higher.\n")
+
+    again = input("Please type 'y' to test another grade, anything else will exit you from the program: \n")
+    again = again.lower()
+    
+    if again != 'y':
+        break
