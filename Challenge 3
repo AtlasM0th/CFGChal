@@ -1,0 +1,48 @@
+import numpy as np
+
+# Introduction statement
+print("You're travelling along a long path outside of the village, surrounded by forests.")
+
+
+# Create a function to search the array
+def search(array, target):
+    where = np.where(array == target)
+    if len(where[0]) > 0:
+        return where
+    else:
+        return None
+
+
+# First option
+pathChoice = input("Suddenly you come to a fork in the road, do you wish to head right 'R' or left? 'L': ").upper()
+if pathChoice == 'R':
+    print("Ah! A goblin, goblins love to bet, maybe if you choose a number he is thinking of he will let you pass...")
+
+    # Goblin's array, and the user's guess
+    goblinArray = np.array([[52, 54, 69, 78, 84], [31, 35, 61, 67, 76], [17, 50, 51, 56, 62], [10, 24, 42, 66, 75],
+                            [7, 29, 43, 47, 55], [11, 12, 30, 82, 85], [6, 13, 41, 71, 79]])
+    humanGuess = int(input("Guess a number between 5 and 85 weary traveller! \n"))
+
+    location = search(goblinArray, humanGuess)
+    if search(goblinArray, humanGuess):
+        print("GAH! You guessed correctly traveller! Fine... I guess you can leave...")
+        print("Congratulations, your guess was correct and the number was found in ", location)
+    else:
+        print("AHA! I win! I win! Find another route, go climb a mountain for all I care!")
+
+else:
+    print("Woo! You come across a tavern. Somewhere to sleep for the evening. ")
+    print("Better find some work for tomorrow... ")
+    print("This job is advertised between 10 and 50 gold, I suppose the tavern owner wants you to name your price...")
+
+    # Tavern's array and the user's guess
+    tavernArray = np.array([[14, 22, 35, 37, 43], [10, 29, 33, 45, 50], [17, 19, 20, 25, 42], [11, 24, 27, 48, 49],
+                            [13, 15, 21, 39, 46], [16, 26, 30, 31, 34]])
+    humanGuess2 = int(input("How much do you think that job is worth, weary traveller? \n"))
+
+    location2 = search(tavernArray, humanGuess2)
+    if search(tavernArray, humanGuess2):
+        print("Aye, sounds good to me, I'll give you a bed for tonight on the house for your trouble")
+        print("Congratulations, your guess was correct and the number was found in ", location2)
+    else:
+        print("Absolutely not, cough up the money for your room and get to bed.")
