@@ -1,0 +1,25 @@
+again = 'y'
+
+
+def factorial(n):
+    factorial = 1
+    for i in range(n):
+        factorial *= i+1
+    return factorial
+
+
+while True:
+    number = int(input("Please enter the number you would like the factorial of up to 100: "))
+
+    if number >= 100:
+        print("Error, you have entered an integer which is too large, please enter an integer up to 100.")
+        continue
+
+    else:
+        print(factorial(number))
+
+    again = input("Please enter 'y' if you would like to check another integer, anything else will exit the program: ")
+    again = again.lower()
+
+    if again != 'y':
+        break
