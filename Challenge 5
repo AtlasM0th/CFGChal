@@ -1,0 +1,64 @@
+# Import library
+import random
+import time
+
+# Card number generation
+genCardNumber = random.sample(range(1000, 9999), 4)
+genCardNumberHidden = 'XXXX XXXX XXXX ' + str(genCardNumber[3])
+newCardNumberV = str(genCardNumber[0]).replace(str(genCardNumber[0])[0], '4', 1)
+newCardNumberM = str(genCardNumber[0]).replace(str(genCardNumber[0])[0], '2', 1)
+newCardNumberM2 = str(genCardNumber[0]).replace(str(genCardNumber[0])[0], '5', 1)
+
+#Introduction
+print("Tired of playing by the rules? Say hello to 'Felonious Finances,' the dark web's premier credit card emporium "
+      "where the only thing higher than the interest rates is the thrill of breaking the law with style!")
+
+enter = input("Press 'x' to enter the site: ").lower()
+
+if enter == 'x':
+    print("Today's products include: Visa, Mastercard and American Express")
+    choice = input("Please enter 'V' for Visa or 'M' for Mastercard: ").upper()
+
+    #Visa
+    if choice == 'V':
+        print("Visa added to cart")
+        print("Purchase confirmed")
+        for i in range(5, 0, -1):
+            time.sleep(1)
+            print(i)
+            continue
+        print("Thanks for your purchase!")
+        print("Your card number is: ", genCardNumberHidden)
+        password = input("Please enter your 3 digit purchase pin to unlock the full card number: ")
+        if password == '123':
+            print("Thank you for confirming, your full number is: ", newCardNumberV + " " + str(genCardNumber[1]) + " "
+                  + str(genCardNumber[2]) + " " + str(genCardNumber[3]))
+        else:
+            print("Whoopsies! Bad luck, no free money for you!")
+
+    #Mastercard
+    if choice == 'M':
+        print("Mastercard added to cart")
+        print("Purchase confirmed")
+        for i in range(5, 0, -1):
+            time.sleep(1)
+            print(i)
+            continue
+        print("Thanks for your purchase!")
+        print("Your card number is: ", genCardNumberHidden)
+        password = input("Please enter your 3 digit purchase pin to unlock the full card number: ")
+        if password == '123':
+
+            # Random select between card starting with 5 or 2
+            cardSelect = random.random()
+            if cardSelect < 0.5:
+                x = newCardNumberM
+            else:
+                x = newCardNumberM2
+
+            print("Thank you for confirming, your full number is: ", x + " " + str(genCardNumber[1]) + " "
+                  + str(genCardNumber[2]) + " " + str(genCardNumber[3]))
+        else:
+            print("Whoopsies! Bad luck, no free money for you!")
+
+    print("Disclaimer: purchased cards are non-refundable and definitely won't pass Luhn's algorithm! Goodbye!")
