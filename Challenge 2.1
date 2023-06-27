@@ -1,0 +1,57 @@
+again = 'y'
+
+# Small to large
+def bubbleSortSL(listA):
+    indexingLength = len(listA) - 1
+    sorted = False
+
+    while not sorted:
+        sorted = True
+        for i in range(0, indexingLength):
+            if listA[i] > listA[i+1]:
+                sorted = False
+                listA[i], listA[i+1] = listA[i+1], listA[i]
+    return listA
+
+# Large to small
+def bubbleSortLS(listA):
+    indexingLength = len(listA) - 1
+    sorted = False
+
+    while not sorted:
+        sorted = True
+        for i in range(0, indexingLength):
+            if listA[i] < listA[i+1]:
+                sorted = False
+                listA[i], listA[i+1] = listA[i+1], listA[i]
+    return listA
+
+while True:
+    # Take user input to create the array
+    numbers = input("Enter up to 100 integers, seperated by spaces: ").split()
+    numbers = [int(num) for num in numbers]
+
+    # Check the array doesn't exceed maximum length
+    if len(numbers) >= 100:
+        print("Error, you have entered more than 100 integers.")
+        continue
+
+    else:
+        # Ask the user how they would like to sort the array
+        sortChoice = input("Please type 'L' if you would like to sort from largest to smallest, or 'S' if you would like to "
+                       "sort from smallest to largest: ").upper()
+        if sortChoice == 'L':
+            print("Original array: ", numbers)
+            bubbleSortLS(numbers)
+            print("Sorted array: ", numbers)
+
+        else:
+            print("Original array: ", numbers)
+            bubbleSortSL(numbers)
+            print("Sorted array: ", numbers)
+
+    again = input("Please type 'y' to enter another array, anything else will exit you from the program: \n")
+    again = again.lower()
+
+    if again != 'y':
+        break
