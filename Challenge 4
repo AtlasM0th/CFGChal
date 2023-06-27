@@ -1,6 +1,7 @@
 again = 'y'
 
 
+@lru_cache # Look up table built into Python
 def factorial(n):
     factorial = 1
     for i in range(n):
